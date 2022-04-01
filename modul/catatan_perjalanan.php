@@ -93,46 +93,46 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Lihat Riwayat Catatan</h4><br>
-                    
-                      <table id="tabel-data" class="table display order-column" style="width: 100%;">
-
-                          <thead>
-                              <tr>
-                              <th>No</th>
-                                  <th>Tanggal</th>
-                                  <th>Jam</th>
-                                  <th>Suhu</th>
-                                  <th>Lokasi</th>
-                              </tr>
-                          </thead>
-                          <tbody id="tampil">
-                                            <?php
-                                                $no = 1;
-                                                $data = file('catatan.txt', FILE_IGNORE_NEW_LINES);
-                                                $user = $_SESSION['nik'] . "|" . $_SESSION['nama_lengkap'];
-                                                foreach ($data as $value) {
-                                                  $pecah = explode("|", $value);
-                                                  if(isset($pecah[0])) {
+                      <div class="table-responsive">
+                        <table id="tabel-data" class="table display order-column" style="width: 100%;">
+  
+                            <thead>
+                                <tr>
+                                <th>No</th>
+                                    <th>Tanggal</th>
+                                    <th>Jam</th>
+                                    <th>Suhu</th>
+                                    <th>Lokasi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tampil">
+                                              <?php
+                                                  $no = 1;
+                                                  $data = file('catatan.txt', FILE_IGNORE_NEW_LINES);
+                                                  $user = $_SESSION['nik'] . "|" . $_SESSION['nama_lengkap'];
+                                                  foreach ($data as $value) {
+                                                    $pecah = explode("|", $value);
+                                                    if(isset($pecah[0])) {
+                                                ?>
+                                                <?php if($pecah[0] == $_SESSION['nik']) {
                                               ?>
-                                              <?php if($pecah[0] == $_SESSION['nik']) {
-                                            ?>
-                                              <tr>
-                                                    <td><?= $no++ ?></td>
-                                                    <td><?= $pecah['2'] ?></td>
-                                                    <td><?= $pecah['3'] ?></td>
-                                                    <td><?= $pecah['4'] ?> &#8451;</td>
-                                                    <td><?= $pecah['5'] ?></td>
-                                                    
-                                                    
-                                                  </tr>
-                                              <?php }
-                                              }
-                                              }
-                                            ?>
-                          </tbody>
-                          
-                      </table>
-                    
+                                                <tr>
+                                                      <td><?= $no++ ?></td>
+                                                      <td><?= $pecah['2'] ?></td>
+                                                      <td><?= $pecah['3'] ?></td>
+                                                      <td><?= $pecah['4'] ?> &#8451;</td>
+                                                      <td><?= $pecah['5'] ?></td>
+                                                      
+                                                      
+                                                    </tr>
+                                                <?php }
+                                                }
+                                                }
+                                              ?>
+                            </tbody>
+                            
+                        </table>
+                      </div>
                   </div>
                 </div>
 
